@@ -1,0 +1,23 @@
+
+This dll works only in conjunction with COMView 1.7.0+ or OLEView. It has to
+be registered with regsvr32 and will show interface IShellFolder in a bit
+more detail.
+
+An object which exposes interface IShellFolder is CLSID "desktop" for example.
+
+Source code is included, so you may add more interfaces to the viewer.
+That's very simple. Just do
+
+- add code for your interface viewer somewhere in CVViewer.asm
+- add a call of your new viewer code in proc "View" in CVViewer.asm
+- add some data for registry stuff. Search for "RegKeys_CVViewer" in 
+  CVViewer.asm and copy these 2 lines:
+	REGSTRUCT <-1, 0, CStr("Interface\{000214E6-0000-0000-C000-000000000046}")>
+	REGSTRUCT <CStr("OLEViewerIViewerCLSID"), 0, -1>
+  In the first line there is the IID of the interface your new viewer is
+  for and this has to be modified accordingly. The second line should be
+  left unchanged.
+
+Japheth
+
+

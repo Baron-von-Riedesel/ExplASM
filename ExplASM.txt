@@ -1,0 +1,67 @@
+
+ ExplorerASM
+
+ ExplorerASM is an explorer application written in assembly.
+
+ From a technical point of view this app consists of:
+ - a simple window with a treeview client. The treeview is filled 
+   from IShellFolder clients, the root of which is received from 
+   function SHGetDesktopFolder.
+ - an IShellBrowser object to let the views created communicate with 
+   the application. 
+
+ The original purpose of this app was to provide a test platform for 
+ self-written shell namespace extensions. But of course if you want 
+ you may use it as explorer "substitute" (possibly after some enhancements). 
+ But be cautious: some features are (still) missing and some
+ features of original explorer are undocumented. In no case rename ExplASM.exe
+ to explorer.exe!
+
+
+ Restrictions
+
+ Option "Include Browsable Items" doesn't work in windows 98. If activated, 
+ selecting a file in treeview will terminate the application.
+
+
+ Building Binary
+ 
+ The assembly source is written in Masm syntax, it has been tested with
+ JWasm and Masm. The WinInc include files are used, which may be found at
+ http://github.com/Baron-von-Riedesel/WinInc.
+ A Makefile (NMAKE) is supplied as well to build the binaries. Please note
+ that besides ExplASM.EXE there will a dll be build. This is an "interface"
+ viewer for interface IShellFolder, to be used by COMView or OLEView only.
+
+
+ History
+
+ version 0.9.0: the first version uploaded.
+ version 1.0.0: DDE communication added, thus allowing to handle "explore" menu command
+ version 1.1.0: icons are displayed in left panel.
+ version 1.1.1: folders may be in-place-renamed in left panel
+ version 1.1.2: support for windows XP (visual styles, 32-bit anti-aliased icons)
+ version 1.1.3: refresh function implemented, IDropTargetHelper used if available
+ version 1.1.4: drag&drop shortcut menu supported, creating shortcuts implemented,
+                last folder saved in private profile
+ version 1.1.5: browsable items may be included in treeview list (is default for 
+                windows XP)
+ version 1.1.6: changes in the namespace (new, deleted or renamed folders) now 
+                automatically reflected in the left panel (function SHChangeNotifyRegister
+                is used). Folder name as commandline argument accepted.
+ 02/2005 v1.1.7: changed to h2incx generated include files, MASM32 no longer
+                 used.  
+ 02/2005 v1.1.8: message cracker macro calls adjusted to windowsx.inc of 
+                 wininc.zip.
+ 08/2007 v1.1.9: source and makefiles adjusted so that no files from the 
+                 MS platform SDK are needed to build the binary.
+ 06/2008 v1.2.0: Switched to JWasm to be used as default assembler.
+  
+
+ License
+ 
+ ExplorerASM is public domain.
+ 
+
+ Japheth (http://github.com/Baron-von-Riedesel)
+

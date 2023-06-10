@@ -1,0 +1,54 @@
+
+#include "rsrc.h"
+#include <resource.h>
+
+IDC_CURSOR1             CURSOR  DISCARDABLE     "Res\\Splith.cur"
+
+IDR_ACCELERATOR1 ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_DELETE,      IDM_DELETE,             VIRTKEY, NOINVERT
+    VK_F5,          IDM_REFRESH,            VIRTKEY, NOINVERT
+END
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "Res\\explorer.ico"
+
+IDD_DIALOG2 DIALOG DISCARDABLE  0, 0, 166, 85
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About CVViewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Close",IDCANCEL,58,64,50,14
+    EDITTEXT        IDC_EDIT1,7,7,152,51,ES_CENTER | ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY
+END
+
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Statusline",                 IDM_STATUSLINE
+        MENUITEM "&Refresh",                    IDM_REFRESH
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Create ViewObject",           IDM_CREATEVIEWOBJECT
+        MENUITEM "GetUIObjectOf with RClick",   IDM_GETUIOBJECTOF
+        MENUITEM "Support Composite Menus",     IDM_COMPMENUS
+        MENUITEM "Register as Drop Target",     IDM_DROPTARGET
+        MENUITEM "TrackSelect Style",           IDM_TRACKSELECT
+        MENUITEM "Respond to DDE messages",     IDM_DDERESPOND
+        MENUITEM "Include Browsable Items",     IDM_BROWSEFILES
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "About ...",                   IDM_ABOUT
+    END
+END
+
